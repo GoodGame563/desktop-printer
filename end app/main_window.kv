@@ -1,0 +1,72 @@
+
+:
+    EnterWindow:
+    MainWindow:
+
+<EnterWindow>:
+    name: "enter"
+    MDFloatLayout:
+
+        Image:
+            source: "logo.png"
+            size_hint_y: .1
+            size_hint_x: .1
+            pos_hint: {"center_x": .05, "center_y": .95}
+        
+        BoxLayout:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            orientation: 'vertical'
+            spacing: 10
+            size_hint_y: .5
+            size_hint_x: .4
+            MDLabel:
+                text: "Авторизация"
+                text_color: "black"
+                font_style: "Display"
+                halign: "center"  # Выравнивание по горизонтали
+            Widget:
+                size_hint_y: None
+                height: "50dp"  
+            MDTextField:
+                id: username
+                hint_text: "Логин"
+                mode: "filled"
+                font_size: "24sp"
+                validator: "email"
+                MDTextFieldHintText:
+                    text: "Email"
+            MDTextField:
+                id: password
+                hint_text: "Пароль"
+                password: True
+                mode: "filled"
+                font_size: "24sp"
+                MDTextFieldHintText:
+                    text: "Пароль"
+            Widget:
+                size_hint_y: None
+                height: 50  
+            MDButton:
+                style: "filled"
+                on_release: app.login()
+                pos_hint: {"center_x": .5, "center_y": .4}
+                MDButtonText:
+                    font_size: "24sp"
+                    text: "ВОЙТИ"
+
+   
+
+<MainWindow>:
+    name: "main"
+    BoxLayout:
+        pos_hint: {"center_x": .5, "center_y": .5}
+        orientation: 'vertical'
+        spacing: 10
+        size_hint_y: .5
+        size_hint_x: .4
+        MDLabel:
+            text: "ТЫ в акаунте"
+            text_color: "black"
+            font_style: "Display"
+            halign: "center"  # Выравнивание по горизонтали
+    

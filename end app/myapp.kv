@@ -1,0 +1,28 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+MyScreenManager:
+    transition: FadeTransition()
+    MainScreen:
+    SecondScreen:
+
+<MainScreen>:
+    name: "main"
+    BoxLayout:
+        orientation: 'vertical'
+        MDFlatButton:
+            text: "Перейти на второй экран"
+            on_release: app.change_screen("second")
+        MDLabel:
+            text: "Это главный экран"
+            halign: "center"
+
+<SecondScreen>:
+    name: "second"
+    BoxLayout:
+        orientation: 'vertical'
+        MDFlatButton:
+            text: "Вернуться на главный экран"
+            on_release: app.change_screen("main")
+        MDLabel:
+            text: "Это второй экран"
+            halign: "center"

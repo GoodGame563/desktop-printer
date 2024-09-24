@@ -1,0 +1,67 @@
+{
+	"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjcxMDAzODIsImV4cCI6MTcyNzcwNTE4Miwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibmV3QWNjb3VudCJ9.BwC06ZnFsgQpQDu1nf2I4ryQrM8Z7DmcVY-AC5PK0HtnW1fAatKpxeUOMLlnNTuTvYz5PxxCzqy925l__VQiwy9y1dYB0cQBmZ4nsdVhB9aAn3sx5w4ymNsarNe-Ke1ZVDBHAew80owl5O5299GahfczQBM8u2HbCOrPYI_OyNRlrFqPsNSdtM5FWN5_V0GJKhXkoWwuec9bEcSapCUrWI2SpeR_4xiC9xJYmnmQF1qBFaSeMY-5uvU1V8eJu7yF2LDnUE5rW1b166BYW45EOFlINzD-lUJv35wXuHs1izuD-LJdu0FXfkCWbEG-brfBxryVuhynSirKPZbEHmhtww",
+	"data": {
+		"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjcxMDAzODIsImV4cCI6MTcyNzcwNTE4Miwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibmV3QWNjb3VudCJ9.BwC06ZnFsgQpQDu1nf2I4ryQrM8Z7DmcVY-AC5PK0HtnW1fAatKpxeUOMLlnNTuTvYz5PxxCzqy925l__VQiwy9y1dYB0cQBmZ4nsdVhB9aAn3sx5w4ymNsarNe-Ke1ZVDBHAew80owl5O5299GahfczQBM8u2HbCOrPYI_OyNRlrFqPsNSdtM5FWN5_V0GJKhXkoWwuec9bEcSapCUrWI2SpeR_4xiC9xJYmnmQF1qBFaSeMY-5uvU1V8eJu7yF2LDnUE5rW1b166BYW45EOFlINzD-lUJv35wXuHs1izuD-LJdu0FXfkCWbEG-brfBxryVuhynSirKPZbEHmhtww",
+		"user_job_titles": [],
+		"user_phone": "123444444",
+		"user_role": "Создатель",
+		"user_mail": "newAccount",
+		"user_file_path": {
+			"url": "pdf\/user\/70",
+			"label": "ШК"
+		},
+		"user_is_worker": false,
+		"user_id": 70,
+		"user_is_visible_login": false,
+		"user_f_name": "newAccount",
+		"user_l_name": "newAccount",
+		"user_company_id": 50,
+		"user_first_company_id": 50,
+		"user_company_name": "newAccount",
+		"user_unique_string": "657b2e9f0561f",
+		"timezone": 300,
+		"time_of_work_on_day_in_minutes": 0,
+		"sum": 0,
+		"user_active_or_suspended_job_title": {
+			"can_paid": null,
+			"work_user_record_id": null,
+			"work_record_id": null,
+			"is_paid": null,
+			"worker_id": null,
+			"name": null,
+			"start_date": null,
+			"time_of_work_in_minutes": null,
+			"status": null,
+			"status_rus": null,
+			"worker_discount": 100,
+			"sum": null,
+			"sum_start": null,
+			"count_array": [],
+			"is_auto_closed": false,
+			"valid_job_titles": [],
+			"work_user_record_dates": [],
+			"job_title_id": null,
+			"job_title_name": null
+		},
+		"has_active_job": false,
+		"user_can_create_session_on_tsd": true,
+		"user_can_change_count_on_tsd": true,
+		"company_is_child": false,
+		"subscription": {
+			"expirationDate": "2030-02-01 15:31:05",
+			"isTrial": false,
+			"tariff": {
+				"id": 2,
+				"name": "Расширенный",
+				"defaultPrice": 50,
+				"code": "extended",
+				"maxOrganizations": 30,
+				"maxCompany": 200,
+				"maxUsers": 500
+			}
+		}
+	},
+	"errors": [],
+	"status": "success",
+	"refresh_token": "010ff37135cdacaff6f873fb1a848f9df1868d2ae3e24853352111444de4b838e9766429b7c8c03135c93616f28c21f1f7c376d032982bfc4365f43686c03cd1"
+}

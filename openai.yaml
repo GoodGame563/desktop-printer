@@ -1,0 +1,344 @@
+openapi: 3.0.0
+info:
+  title: Printer API
+  version: '1.0.0'
+
+paths:
+  /api/printer/list:
+    post:
+      summary: Список принтеров
+      description: Список принтеров
+      operationId: getPrinters
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Success response with printer list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: Айдишник принтера
+                            name:
+                              type: string
+                              description: Имя принтера
+                            system_id:
+                              type: string
+                              description: Уникальный id принтера на машине
+                            last_update:
+                              type: string
+                              example: "2024-09-20 10:15:49"
+                            status:
+                              type: string
+                              example: "online"
+                              enum:
+                              - "online"
+                              - "offline"
+                            company_id:
+                              type: string
+                              example: "63"
+                            total_count:
+                              type: string
+                              example: "1"
+                      total_count:
+                        type: integer
+                      filters:
+                        type: object
+                      sql:
+                        type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object
+                    example: {}
+  /api/printer/edit:
+    put:
+      summary: Редактирование принтера
+      description: Updates the details of an existing printer.
+      operationId: editPrinter
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditPrinterSchema'
+      responses:
+        '200':
+          description: Printer successfully updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    $ref: '#/components/schemas/PrinterShow'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object       
+
+  /api/printer/create:
+    put:
+      summary: Добавление принтера
+      description: Updates the details of an existing printer.
+      operationId: createPrinter
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditPrinterSchema'
+      responses:
+        '200':
+          description: Printer successfully updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    $ref: '#/components/schemas/PrinterShow'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object   
+
+  /api/printQueue/list:
+    post:
+      summary: Очередь печати
+      description: Список принтеров
+      operationId: getQueue
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Заодно используем запрос для обновления инфы по принтерам
+              properties:
+                online_printers:
+                  type: array
+                  description: Айдишники активных принтеров
+                  items:
+                    type: integer
+                offline_printers:
+                  type: array
+                  description: Айдишники выключенных принтеров
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: Success response with printer list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: Айдишник элемента очереди
+                              example: "1"
+                            printer_id:
+                              type: string
+                              description: Айдишник принтера (тот что в нашей системе, а не уникальный у пк)
+                              example: "1"
+                            data:
+                              type: string
+                              description: Ссылка на файл в яндекс клауде
+                            created_at:
+                              type: string
+                              example: "2024-09-20 10:15:49"
+                            updated_at:
+                              type: string
+                              example: "2024-09-20 10:15:49"
+                            status:
+                              type: string
+                              example: "pending"
+                              description: Статусы документов, берем в печать только в статусе "pending"
+                              enum:
+                              - "pending"
+                              - "in_progress"
+                              - "done"
+                            count:
+                              type: string
+                              example: "63"
+                              description: Количество документов распечатать
+                            total_count:
+                              type: string
+                              example: "1"
+                      total_count:
+                        type: integer
+                      filters:
+                        type: object
+                      sql:
+                        type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/Status'
+                  errors:
+                    $ref: '#/components/schemas/Errors'
+                  data:
+                    type: object
+                    example: {}
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Status:
+      type: string
+      example: "success"
+
+    Error:
+      type: object
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+
+    Errors:
+      type: array
+      items:
+        $ref: '#/components/schemas/Error'
+
+    PrinterShow:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/FieldSchema'
+        status:
+          $ref: '#/components/schemas/FieldSchema'
+        company_id:
+          $ref: '#/components/schemas/FieldSchema'
+        name:
+          $ref: '#/components/schemas/FieldSchema'
+        status_rus:
+          type: string
+        system_id:
+          $ref: '#/components/schemas/FieldSchema'
+
+    FieldSchema:
+      type: object
+      properties:
+        value:
+          description: 'Can be: string, number'
+        label:
+          type: string
+
+    EditPrinterSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        system_id:
+          type: string
+        status:
+          type: string
+        id:
+          type: integer
+          description: 0 если идёт создание, < 0 если редактирование
